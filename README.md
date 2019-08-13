@@ -12,5 +12,5 @@
 * type값을 반드시 가지고 있어야 한다.
 * 나머지는 있어도 되고 없어도 되면 형식은 자유다.
 * action객체를 새로 만들때마다 계속 생성해서 만들면 좀 불편하므로 action creator 함수를 이용한다.
- - const INC = 'INCREMENT';
-   const incFnc = () => { return {type: INC}; }
+  - const INC = 'INCREMENT';
+    const incFnc = () => { return {type: INC}; }
