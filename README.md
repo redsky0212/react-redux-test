@@ -1,6 +1,8 @@
 ## 설명
 
-### React Redux 
+## 참고 사이트 (https://redux.vlpt.us/1-1-workspace-setup.html)
+
+### React Redux (npm i redux react-redux) react-redux는 react에서 redux를 더 편하게 사용할 수 있게 해주는 것.
 * store : 애플리케이션의 상태값을 내장
 * action : 상태값의 변화를 일으킬때 참조하는 객체
 * dispatch : action을 store에 전달하는 것
@@ -14,3 +16,10 @@
 * action객체를 새로 만들때마다 계속 생성해서 만들면 좀 불편하므로 action creator 함수를 이용한다.
   - const INC = 'INCREMENT';
     const incFnc = () => { return {type: INC}; }
+* 파라미터를 넘겨줄때는 아래와 같이.
+  - const INC = 'INCREMENT';
+    const incFnc = (diff) => { return {type: INC, diff:diff}; }
+
+### Reducer 만들기
+* reducer는 상태변화를 일으키는 함수.
+* reducer함수는 두개의 인자를 받는다 ( state, action )
