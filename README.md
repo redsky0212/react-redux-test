@@ -90,3 +90,12 @@
 * Provider는 react-redux 라이브러리에 내장되어있고, 리액트 앱에 store를 쉽게 연동 시켜주는 컴포넌트 이다.
 * 연동할 컴포넌트를 Provider로 감싸주고 Provider의 props로 store값을 설정한다.
   - &lt;Provider store={store}&gt;&lt;App /&gt;&lt;/Provider&gt;
+
+### Counter 컨테이너 컴포넌트 만들기
+* Counter컴포넌트는 이미 만들었지만 store에 연결할 Counter의 컨테이너를 아직 만들지 않았으므로 생성한다.(containers/CounterContainer.js)
+* connect()를 이용하여 store와 Counter컴포넌트를 연결시켜주는 로직을 작성한다.
+* 내부 소스에는 랜덤컬러를 생성하는 함수가 필요한데 이것은 공통적인 함수이므로 Utils에 함수를 생성해서 가져와 사용한다.
+
+### 리듀서를 각 기능별로 쪼개서 combineReducers를 통해 합치기
+* 각 기능별로 리듀서를 쪼갠다 (reducers/color.js, reducers/number.js)
+* reducers/index.js에서 redux의 combineReducers를 통해 합친다.

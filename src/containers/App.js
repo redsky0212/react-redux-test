@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
-import Counter from '../components/Counter';
+import CounterContainer from './CounterContainer';
 
 const propTypes = {
     
@@ -20,7 +20,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <Counter />
+                <CounterContainer />
             </div>
         );
     }
