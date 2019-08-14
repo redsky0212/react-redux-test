@@ -70,10 +70,23 @@
 
 ### Actions 만들기
 * 액션은 객체이며 type이 설정 되어야 한다. type은 액션의 이름과 같다.
-* 액션 객체는 따로 파일로 만들어 관리하면 편리함. ActionTypes.js 생성.
+* 액션 객체는 따로 파일로 만들어 관리하면 편리함. actions/ActionTypes.js 생성.
 * 액션 선언은 대문자로 한다.
 * 액션 생성자 만들기 (actions/index.js)
   - 액션을 만드는 함수를 만든다.
 
 ### Reducer 만들기
 * 액션의 type에 따라 변화를 일으키는 함수.
+* 리듀서는 actions에 의해 변화를 일으키기전 초기값을 셋팅해야한다. reducers/index.js
+* 리듀서 함수는 state, action을 파라미터를 가지고 있다.
+* 우선 하나의 리듀서만 만든다.
+
+### Store 만들기
+* store의 역할 : 현재 상태를 내장, subscribe중인 함수들을 state가 업데이트 될때마다 다시 실행되게 한다.
+* createStore를 이용하여 파라미터로 만든 리듀서를 넣어준다. (src/index.js에 코딩)
+  - const store = createStore(reducers);
+
+### Provider 를 이용하여 리액트 앱에 store연동
+* Provider는 react-redux 라이브러리에 내장되어있고, 리액트 앱에 store를 쉽게 연동 시켜주는 컴포넌트 이다.
+* 연동할 컴포넌트를 Provider로 감싸주고 Provider의 props로 store값을 설정한다.
+  - &lt;Provider store={store}&gt;&lt;App /&gt;&lt;/Provider&gt;
