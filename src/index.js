@@ -9,7 +9,9 @@ import {createStore} from 'redux';
 import reducers from './reducers';
 import { Provider } from 'react-redux';
 // 스토어 생성
-const store  = createStore(reducers);
+//const store  = createStore(reducers);
+// redux 개발자 도구를 사용하기 위한 코딩
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
     <Provider store={store}>

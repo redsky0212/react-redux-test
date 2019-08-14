@@ -99,3 +99,15 @@
 ### 리듀서를 각 기능별로 쪼개서 combineReducers를 통해 합치기
 * 각 기능별로 리듀서를 쪼갠다 (reducers/color.js, reducers/number.js)
 * reducers/index.js에서 redux의 combineReducers를 통해 합친다.
+
+### 액션, 리듀서를 Container, component에 연결시키는 순서.
+* 먼저 일어날 수 있는 액션type을 만든다.
+* 액션 type에 맞는 액션생성자(Action creators)를 만든다.
+* 각 기능에 맞는 리듀서를 만든다. color.js, number.js등 과 같이...
+* 분리되어있는 리듀서 파일들을 합치는 작업을 reducers/index.js에서 만든다.
+  - import { combineReducers } from 'redux'; 를 이용한다.
+* store를 생성한다.
+  - import { createStore } from 'redux' 를 이용하여 store를 생성하고 가져온 reducer를 연결한다.
+* Provider를 이용하여 store를 App에 연동한다.
+  - import { Provider } from 'react-redux'; 를 이용한다.
+* Container컴포넌트에서 connect를 이용하여 여러가지 컴포넌트들을 연결하고 props로 가져올 수 있게 mapStateToProps, mapDispatchToProps 를 사용하여 connect한다.

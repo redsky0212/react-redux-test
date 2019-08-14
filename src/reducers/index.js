@@ -1,26 +1,35 @@
-import color from './color';
-import number from './number';
+import * as types from '../actions/ActionTypes';
+import {Map, List} from 'immutable';
 
-import { combineReducers } from 'redux';
-
-/*
-    서브 리듀서들을 하나로 합칩니다.
-    combineReducers 를 실행하고 나면, 나중에 store의 형태가 파라미터로 전달한 객체의 모양대로 만들어집니다.
-    지금의 경우:
-    {
-        numberData: {
+const initialState = Map({
+    counters: List([
+        Map({
+            color: 'black',
             number: 0
-        },
-        colorData: {
-            color: 'black'
-        }
-    }
-    로 만들어집니다.
-*/
-
-const reducers = combineReducers({
-    numberData: number,
-    colorData: color
+        })
+    ])
 });
 
-export default reducers;
+function counter(state=initialState, action){
+    const counters = state.get('counters');
+
+    switch(action.type){
+        case types.CREATE : 
+            return state.set('counters', counters.push(Map({
+                color: action.color,
+                number: 0
+            })));  
+        case types.REMOVE : 
+            return state.set('counters', counters.pop()); 
+        case types.INCREMENT : 
+            return state.set('counters', counters.update(action.index, (counter) => counter.set('number', counter.get('number') + 1)));
+        case types.DECREMENT :
+            return state.set('counters', counters.update(action.index, (counter) => counter.set('number', counter.get('number') - 1)));
+        case types.SET_COLOR :
+            return state.set('counters', counters.update(action.index, (counter) => counter.set('color', action.color))); 
+        default :
+            return state;
+    }
+}
+
+export default counter;
